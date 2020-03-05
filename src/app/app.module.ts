@@ -8,6 +8,21 @@ import { HomeComponent } from './components/site/home/home.component';
 import { AboutComponent } from './components/site/about/about.component';
 import { ProductComponent } from './components/site/product/product.component';
 import { ContactComponent } from './components/site/contact/contact.component';
+import { RouterModule, Routes } from '@angular/router';
+// import { registerContentQuery } from '@angular/core/src/render3/instructions';
+
+const appRoutes: Routes = [
+
+  { path: 'home', component: HomeComponent},
+  
+  { path: 'product', component : ProductComponent},
+  
+  { path: 'about', component : AboutComponent},
+
+  { path: 'contact', component : ContactComponent},
+  { path: '', redirectTo:'/home', pathMatch:'full'  }
+
+  ];
 
 @NgModule({
   declarations: [
@@ -20,7 +35,11 @@ import { ContactComponent } from './components/site/contact/contact.component';
     ContactComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
